@@ -3,12 +3,12 @@ import WeatherTemperatura from './WeatherTemperatura';
 import WeatherExtraInfo from './WeatherExtraInfo';
 import {
     CLOUD,
-CLOUDY,
-SUN, 
-RAIN, 
-SNOW, 
-WINDY,
-} from './weathers';
+    CLOUDY,
+    SUN, 
+    RAIN, 
+    SNOW, 
+    WINDY,
+    } from './weathers';
 
 const WeatherData = () => (
     <div>
