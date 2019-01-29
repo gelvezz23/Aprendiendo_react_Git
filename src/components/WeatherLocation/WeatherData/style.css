@@ -3,18 +3,20 @@
     width: 400px;
     height: 100px;
     line-height:100px ;
+    
 }
 .weatherExtraInfoCont{
-    /*background-color: blueviolet;*/
+    
     width: 40%;
-    display: block;
     line-height: 28px;
     text-align: left;
+    display: inline-block;
+
 }
 .weatherTemperatureCont{
-/* background-color: blue;*/
+
  width: 60%;
- display: block;
+ display: inline-block;
 }
 .temperature{
 font-size: 30px;
