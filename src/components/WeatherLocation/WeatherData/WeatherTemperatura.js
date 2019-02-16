@@ -41,8 +41,8 @@ const WeatherTemperatura = ({temperature,weatherState}) => (
     </div>
 );
 
-WeatherTemperatura.PropTypes = {
-    temperature: PropTypes.number.isRequired,
-    weatherState: PropTypes.string.isRequired,
-}
+WeatherTemperatura.PropTypes = { 
+    temperature: PropTypes.number.isRequired, 
+    weatherState: PropTypes.string.isRequired, 
+} 
 export default WeatherTemperatura;
