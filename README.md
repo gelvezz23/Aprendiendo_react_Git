@@ -68,19 +68,19 @@ This section has moved here: https://facebook.github.io/create-react-app/docs/de
 This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
 
 ### `Electron JS`
+<br>
+create-react-app my-app<br>
+cd my-app<br>
+yarn add electron --dev<br>
+yarn add electron-builder --dev<br>
+yarn global add foreman # for process management<br>
+yarn install<br><br>
+    --------------------<br><br>
+Create a file called electron-wait-react.js in src directory:<br>
+cd my-app<br><br>
 
-create-react-app my-app
-cd my-app
-yarn add electron --dev
-yarn add electron-builder --dev
-yarn global add foreman # for process management
-yarn install
-    --------------------
-Create a file called electron-wait-react.js in src directory:
-cd my-app
+react: npm run react-start<br><br>
 
-react: npm run react-start
-
-electron: npm run electron-start
-or
-electron src/electron-starter.js
+electron: npm run electron-start<br>
+or<br>
+electron src/electron-starter.js<br>
