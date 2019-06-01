@@ -13,5 +13,10 @@ class App extends Component {
     );
   }
 }
-
+/**
+ * API openweathermap
+ * https://home.openweathermap.org
+ * api.openweathermap.org/data/2.5/weather?q={city name}&appid={apikey}
+ * apikey = {43cf678aca102b58f50ae4141e7b3473}
+ */
 export default App;
