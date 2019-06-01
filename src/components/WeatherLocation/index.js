@@ -1,11 +1,11 @@
-import React from 'react';
+import React,{ Component} from 'react';
 import Location from './Location';
 import WeatherData from './WeatherData';
 import PropTypes from 'prop-types';
 import {
     SUN,
 
-} from './../../../constants/weathers';
+} from './../constants/weathers';
 
 
 
@@ -18,13 +18,29 @@ const data = {
 
 
 }
-
-const WeatherLocation = () => (
+/**
+ * ESTO ES UNA function 
+ * 
+ * const WeatherLocation = () => (
     <div>
 <Location city = {'Colombia'}></Location>
  <WeatherData data= {data}></WeatherData>
  </div>
 );
+ * 
+ */
+class WeatherLocation extends Component {
+    render() {
+        return(
+        <div>
+            <Location city = {'Colombia'}></Location>
+            <WeatherData data= {data}></WeatherData>
+        </div>
+        );
+
+    }
+    
+}
 // en la pagina de facebook esta mas sobre proptypes
 
 export default WeatherLocation ;
