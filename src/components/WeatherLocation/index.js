@@ -2,6 +2,7 @@ import React,{ Component} from 'react';
 import Location from './Location';
 import WeatherData from './WeatherData';
 import PropTypes from 'prop-types';
+import './style.css';
 import {
     SUN,
     CLOUD,
@@ -9,7 +10,11 @@ import {
 
 } from './../constants/weathers';
 
+const location = "Buenos Aires,ar";
+const apikey = "43cf678aca102b58f50ae4141e7b3473";
+const url_base = "http://api.openweathermap.org/data/2.5/weather";
 
+const api_weather = `${url_base}?q=${location}&appid=${apikey}`;
 
 const data = {
     temperature: 5,
@@ -50,6 +55,7 @@ constructor(){
 }
 
     handleUpdateClick = () =>{
+        fetch(api_weather)
         console.log('actualizado');
         this.setState({
             city: 'Cucuta !',
