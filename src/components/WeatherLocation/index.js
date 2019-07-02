@@ -1,6 +1,7 @@
 import React,{ Component} from 'react';
 import Location from './Location';
-import convert from 'convert-units';
+import transformWeather from './../../services/transformWeather';
+import {api_weather} from './../constants/api_url';
 import WeatherData from './WeatherData';
 import './style.css';
 import {
@@ -8,16 +9,12 @@ import {
 } from './../constants/weathers';
 
 const location = "Buenos Aires,ar";
-const apikey = "43cf678aca102b58f50ae4141e7b3473";
-const url_base = "http://api.openweathermap.org/data/2.5/weather";
-//&units=metric <- para convertir a la unidad de grados centi
-const api_weather = `${url_base}?q=${location}&appid=${apikey}`;
 
 const data = {
-    temperature: 5,
+    temperature: 0,
     weatherState: SUN,
-    humidity: 10,
-    wind:'10 m/s',
+    humidity: 0,
+    wind:'0 m/s',
 }
 
 
@@ -33,28 +30,7 @@ constructor(){
         data: data,
     }
 }
-getTemp = (kelvin) => {
-    return convert(kelvin).from("K").to("C")
 
-}
-getWeatherState = weather_data => {
-    return SUN;
-}
-
-getData = weather_data => {
-    const { humidity, temp } = weather_data.main;
-    const { speed } = weather_data.wind;
-    const  weatherState = this.getWeatherState(weather_data);
-    const temperature = this.getTemp(temp);
-    
-    const data = {
-            humidity,
-            temperature,
-            weatherState,
-            wind:` ${speed} m/s `,
-    }
-    return data;
-}
 
 handleUpdateClick = () =>{
         
@@ -63,7 +39,7 @@ handleUpdateClick = () =>{
             return resolve.json();
         }).then((data) => {
             
-            const newWeather = this.getData(data);
+            const newWeather = transformWeather(data);
             console.log(newWeather);
             
             this.setState({ 
