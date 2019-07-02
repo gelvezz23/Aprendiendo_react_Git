@@ -11,17 +11,17 @@ import {
     SNOW, 
     WINDY,
     } from './../../constants/weathers';
-
-const WeatherData = () => (
-    <div className="weatherDataCont">
-<WeatherTemperatura 
-    temperature = {20} 
-    weatherState = {CLOUDY}
-    ></WeatherTemperatura> 
-    <WeatherExtraInfo humidity = {80} wind={"10 m/s "} ></WeatherExtraInfo>
-
-    </div>
-
+    const WeatherData = ({ data }) => {
+        const { temperature, weatherState, humidity, wind } = data;
+        return (
+        <div className="weatherDataCont" >
+            <WeatherTemperatura 
+                temperature={temperature} 
+                weatherState={weatherState} 
+            />
+            <WeatherExtraInfo humidity={humidity} wind={wind} />
+        </div>
+        );
+    };
     
-    );
     export default WeatherData;

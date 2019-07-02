@@ -3,10 +3,11 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "convert-units": "^2.3.4",
     "prop-types": "^15.7.2",
     "react": "^16.7.0",
     "react-dom": "^16.7.0",
-    "react-scripts": "2.1.2",
+    "react-scripts": "^3.0.1",
     "react-weathericons": "^1.0.4"
   },
   "scripts": {
@@ -23,9 +24,5 @@
     "not dead",
     "not ie <= 11",
     "not op_mini all"
-  ],
-  "devDependencies": {
-    "electron": "^4.0.5",
-    "electron-builder": "^20.38.5"
-  }
+  ]
 }

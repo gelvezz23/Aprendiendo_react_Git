@@ -1,19 +1,16 @@
 import React,{ Component} from 'react';
 import Location from './Location';
+import convert from 'convert-units';
 import WeatherData from './WeatherData';
-import PropTypes from 'prop-types';
 import './style.css';
 import {
-    SUN,
-    CLOUD,
-    WINDY,
-
+    SUN
 } from './../constants/weathers';
 
 const location = "Buenos Aires,ar";
 const apikey = "43cf678aca102b58f50ae4141e7b3473";
 const url_base = "http://api.openweathermap.org/data/2.5/weather";
-
+//&units=metric <- para convertir a la unidad de grados centi
 const api_weather = `${url_base}?q=${location}&appid=${apikey}`;
 
 const data = {
@@ -23,24 +20,7 @@ const data = {
     wind:'10 m/s',
 }
 
-const data2 = {
 
-    temperature: 15,
-    weatherState: CLOUD,
-    humidity: 20,
-    wind:'10 m/s',
-}
-/**
- * ESTO ES UNA function 
- * 
- * const WeatherLocation = () => (
-    <div>
-<Location city = {'Colombia'}></Location>
- <WeatherData data= {data}></WeatherData>
- </div>
-);
- * 
- */
 class WeatherLocation extends Component {
     /**
      * un constructor donde creamos un estado que tiene una ciudad 
@@ -49,30 +29,63 @@ class WeatherLocation extends Component {
 constructor(){
     super();
     this.state = {
-        city: 'Cucuta',
-        data : data,
-    };
+        city: 'algo',
+        data: data,
+    }
+}
+getTemp = (kelvin) => {
+    return convert(kelvin).from("K").to("C")
+
+}
+getWeatherState = weather_data => {
+    return SUN;
 }
 
-    handleUpdateClick = () =>{
-        fetch(api_weather)
-        console.log('actualizado');
-        this.setState({
-            city: 'Cucuta !',
-            data : data2,
-        });
+getData = weather_data => {
+    const { humidity, temp } = weather_data.main;
+    const { speed } = weather_data.wind;
+    const  weatherState = this.getWeatherState(weather_data);
+    const temperature = this.getTemp(temp);
+    
+    const data = {
+            humidity,
+            temperature,
+            weatherState,
+            wind:` ${speed} m/s `,
     }
-    render() {
+    return data;
+}
+
+handleUpdateClick = () =>{
+        
+        fetch(api_weather).then(resolve =>  { 
+            
+            return resolve.json();
+        }).then((data) => {
+            
+            const newWeather = this.getData(data);
+            console.log(newWeather);
+            
+            this.setState({ 
+                city:'algo x2',
+                data:newWeather,
+                
+            }); 
+                
+        });    
+}
+
+render() {
 /**
  * variable { dato1 , dato2} = this.Donde estoy tomando el dato
  */
-        const {city , data } = this.state;
+        const {city , data} = this.state;
 
         return(
         <div className="weatherLocationCont">
-            <Location city = {city}></Location>
-            <WeatherData data= {data}></WeatherData>
-            <button onClick={this.handleUpdateClick}>Actualizar</button>
+            <Location city = { city }></Location>
+            <WeatherData data = { data }></WeatherData>
+            <button onClick={ this.handleUpdateClick }>Actualizar</button>
         </div>
         );
 
