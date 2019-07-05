@@ -37,24 +37,15 @@ constructor(){
 componentDidMount(){
     console.log("___________________");
     console.log("componentDidMount");
+    this.handleUpdateClick();
 }
 componentDidUpdate(prevProps,prepState){
     console.log("___________________");
     console.log("componentDidMount");
     // esto es lo recomendado
-    this.handleUpdateClick();
+   
 }
-componentWillMount(){
-    console.log("___________________");
-    console.log("Buscar datos lo antes posible (No es una forma correcto)");
-    console.log("UNSAFE ComponentWillMount");
-    //this.handleUpdateClick();
-    // esto esta mal 
-}
-componentWillUpdate(){
-    console.log("___________________");
-    console.log("UNSAFE componentWillUpdate");
-}
+
 
 
 
