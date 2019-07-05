@@ -17,12 +17,14 @@ const transformWeather = weather_data => {
     const { speed } = weather_data.wind;
     const  weatherState = getWeatherState(weather_data);
     const temperature = getTemp(temp);
+    const city = weather_data.name;
 
     const data = {
             humidity,
             temperature,
             weatherState,
             wind:` ${speed} m/s `,
+            city: city,
     }
     return data;
 }

@@ -8,13 +8,14 @@ import {
     SUN
 } from './../constants/weathers';
 
-const location = "Buenos Aires,ar";
+
 
 const data = {
     temperature: 0,
     weatherState: SUN,
     humidity: 0,
     wind:'0 m/s',
+    city : '...',
 }
 
 
@@ -26,7 +27,7 @@ class WeatherLocation extends Component {
 constructor(){
     super();
     this.state = {
-        city: 'algo',
+        city: '...',
         data: data,
     }
 }
@@ -43,8 +44,8 @@ handleUpdateClick = () =>{
             console.log(newWeather);
             
             this.setState({ 
-                city:'algo x2',
-                data:newWeather,
+                city: newWeather.city,
+                data: newWeather,
                 
             }); 
                 
