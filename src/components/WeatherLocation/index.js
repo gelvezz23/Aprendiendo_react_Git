@@ -30,11 +30,36 @@ constructor(){
         city: '...',
         data: data,
     }
+    console.log("___________________");
+    console.log("Constructor");
+}
+
+componentDidMount(){
+    console.log("___________________");
+    console.log("componentDidMount");
+}
+componentDidUpdate(prevProps,prepState){
+    console.log("___________________");
+    console.log("componentDidMount");
+    // esto es lo recomendado
+    this.handleUpdateClick();
+}
+componentWillMount(){
+    console.log("___________________");
+    console.log("Buscar datos lo antes posible (No es una forma correcto)");
+    console.log("UNSAFE ComponentWillMount");
+    //this.handleUpdateClick();
+    // esto esta mal 
+}
+componentWillUpdate(){
+    console.log("___________________");
+    console.log("UNSAFE componentWillUpdate");
 }
 
 
+
 handleUpdateClick = () =>{
-        
+        console.log("Resultados de HandleUpdateClick")
         fetch(api_weather).then(resolve =>  { 
             
             return resolve.json();
@@ -56,6 +81,8 @@ render() {
 /**
  * variable { dato1 , dato2} = this.Donde estoy tomando el dato
  */
+console.log("___________________");
+console.log("render");
         const {city , data} = this.state;
 
         return(
